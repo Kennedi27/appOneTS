@@ -1,9 +1,9 @@
 import React from 'react-native';
-import OnboardingScreen from './Component/Onboarding/OnboardingScreen';
+import Routers from './Navigation/Routers';
 
 const App = () => {
   return (
-    <OnboardingScreen />
+    <Routers />
   );
 };
 

@@ -11,7 +11,8 @@ const DotSlide = ({ currentIndex, index } : DotProps) => {
     const rBackground = useAnimatedStyle(() => {
         const isActive = currentIndex.value === index;
         return {
-            backgroundColor: withTiming(isActive ? 'blue' : 'grey', {duration: 200}),
+            backgroundColor: withTiming(isActive ? '#3388FF' : '#77CCFF', {duration: 200}),
+            transform: [{ scale: withTiming(isActive ? 1.5 : 1, {duration: 250}) }],
         };
     });
 

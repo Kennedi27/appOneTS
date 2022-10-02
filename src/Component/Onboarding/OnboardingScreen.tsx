@@ -1,22 +1,48 @@
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions, Image } from 'react-native';
 import React, {useRef} from 'react';
 import Slide, { SLIDE_HEIGHT } from './Slide';
 import SubSlide from './SubSlide';
-import Animated, { divide, interpolateColor, useAnimatedScrollHandler, useAnimatedStyle, useDerivedValue, useSharedValue } from 'react-native-reanimated';
+import Animated, { Extrapolate, interpolate, interpolateColor, interpolateNode, useAnimatedScrollHandler, useAnimatedStyle, useDerivedValue, useSharedValue } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
 import DotSlide from './DotSlide';
+import Model from './Model';
+import { Navigations, StackNavigatorProps } from '../../Navigation/Navigations';
 
 const BORDER_RADIUS = 75;
 const { width } = Dimensions.get('window');
 
 const slidesItem = [
-    {label: 'Relaxed', color: '#BFEAF5', description: 'This is for Description Only. Test For Footer Content, So you can changes', subtitle: 'Title footer 1'},
-    {label: 'Playful', color: '#BEECC4', description: 'This is for Description Only. Test For Footer Content, So you can changes', subtitle: 'Title footer 2'},
-    {label: 'Excentric', color: '#FFE4d9', description: 'This is for Description Only. Test For Footer Content, So you can changes', subtitle: 'Title footer 3'},
-    {label: 'Funky', color: '#BFEAF5', description: 'This is for Description Only. Test For Footer Content, So you can changes', subtitle: 'Title footer 4'},
+    {
+        label: 'Relaxed',
+        color: '#BFEAF5',
+        description: 'This is for Description Only. Test For Footer Content, So you can changes',
+        subtitle: 'Title footer 1',
+        pictures: require('../../Assets/img/4.png')
+    },
+    {
+        label: 'Playful',
+        color: '#BEECC4',
+        description: 'This is for Description Only. Test For Footer Content, So you can changes',
+        subtitle: 'Title footer 2',
+        pictures: require('../../Assets/img/1.png')
+    },
+    {
+        label: 'Excentric',
+        color: '#FFE4d9',
+        description: 'This is for Description Only. Test For Footer Content, So you can changes',
+        subtitle: 'Title footer 3',
+        pictures: require('../../Assets/img/3.png')
+    },
+    {
+        label: 'Funky',
+        color: '#BFEAF5',
+        description: 'This is for Description Only. Test For Footer Content, So you can changes',
+        subtitle: 'Title footer 4',
+        pictures: require('../../Assets/img/2.png')
+    },
 ];
 
-const OnboardingScreen = () => {
+const OnboardingScreen = ({ navigation }: StackNavigatorProps<Navigations, 'OnboardingScreen'>) => {
     const x = useSharedValue(0);
     const scroll = useRef<Animated.ScrollView>(null);
     const scrollHandler = useAnimatedScrollHandler({
@@ -45,11 +71,18 @@ const OnboardingScreen = () => {
 
     const isActiveDot = useDerivedValue(() => {
         return Math.round(x.value / width);
-    })
+    });
 
     return (
         <View style={styles.container}>
             <Animated.View style={[styles.slider, rStyle]}>
+                {
+                    slidesItem.map((item, index) => {
+                    return (
+                            <Model picture={item.pictures} key={index.toString()} currentIndex={isActiveDot}  index={index}/>
+                        );
+                    })
+                }
                 <Animated.ScrollView
                     ref={scroll}
                     horizontal
@@ -57,7 +90,7 @@ const OnboardingScreen = () => {
                     bounces={false}
                     snapToInterval={width}
                     decelerationRate="fast"
-                    scrollEventThrottle={16}
+                    scrollEventThrottle={1}
                     onScroll={scrollHandler}
                 >
                 {
@@ -79,12 +112,15 @@ const OnboardingScreen = () => {
                     <Animated.View style={[ styles.footerSlide, rContentFooter]}>
                         {
                         slidesItem.map(({ subtitle, description }, i) => {
+                            const last = i === slidesItem.length - 1;
                             return <SubSlide
                                         key={i.toString()}
-                                        last={i === slidesItem.length - 1}
+                                        last={last}
                                         onPress={() => {
-                                            if (scroll.current) {
-                                                scroll.current.scrollTo({x: width * (i + 1), animated: true});
+                                            if (last){
+                                                navigation.navigate('WelcomeScreen')
+                                            } else if (scroll.current) {
+                                                scroll.current?.scrollTo({x: width * (i + 1), animated: true});
                                             }
                                         }}
                                         {...{subtitle, description}}
