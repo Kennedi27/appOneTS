@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import Animated, {useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { Config } from '../Config/Config';
 
 export interface DotProps {
     index: number;
@@ -11,7 +12,7 @@ const DotSlide = ({ currentIndex, index } : DotProps) => {
     const rBackground = useAnimatedStyle(() => {
         const isActive = currentIndex.value === index;
         return {
-            backgroundColor: withTiming(isActive ? '#3388FF' : '#77CCFF', {duration: 200}),
+            backgroundColor: withTiming(isActive ? Config.colors.blueActive : Config.colors.blue, {duration: 200}),
             transform: [{ scale: withTiming(isActive ? 1.5 : 1, {duration: 250}) }],
         };
     });
@@ -27,9 +28,9 @@ export default DotSlide;
 
 const styles = StyleSheet.create({
     dot: {
-        width: 8,
-        height: 8,
-        borderRadius: 4,
-        margin: 4,
+        width: Config.dotSlide.sm,
+        height: Config.dotSlide.sm,
+        borderRadius: Config.dotSlide.sm / 2,
+        margin: Config.dotSlide.sm / 2,
     },
 });

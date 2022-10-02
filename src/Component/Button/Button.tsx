@@ -1,22 +1,22 @@
-import { Text, StyleSheet, TouchableOpacity  } from 'react-native';
+import { Text, StyleSheet  } from 'react-native';
 import React from 'react';
 import { RectButton } from 'react-native-gesture-handler';
-
+import { Config } from '../Config/Config';
 
 export interface ButtonProps {
-  variant: 'default' | 'primary';
+  variant: 'default' | 'primary' | 'transparent';
   label: string;
   onPress: () => void;
 }
 
 const Button = ({ variant, label, onPress } : ButtonProps) => {
-  const backgroundColor = variant === 'primary' ? '#2CB980' : 'rgba(12, 13, 52, 0.05)';
+  const backgroundColor = variant === 'primary' ? Config.colors.primary : ( variant === 'transparent' ? 'transparent' : Config.colors.grey);
   const color = variant === 'primary' ? '#FFF' : '#000';
 
   return (
-    <TouchableOpacity style={[ styles.container, {backgroundColor} ]} {...{onPress}}>
+    <RectButton style={[ styles.container, {backgroundColor} ]} {...{onPress}}>
       <Text style={[ styles.label, {color} ]}>{ label }</Text>
-    </TouchableOpacity>
+    </RectButton>
   );
 };
 
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: '#FFF',
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: 'bold',
     textAlign: 'center',
   },

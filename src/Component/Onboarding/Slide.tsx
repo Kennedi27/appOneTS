@@ -1,8 +1,8 @@
-import { View, Text, Dimensions,StyleSheet, Image } from 'react-native';
+import { View, Text, Dimensions,StyleSheet } from 'react-native';
 import React from 'react';
 
 const { width, height } = Dimensions.get('window');
-export const SLIDE_HEIGHT = 0.61 * height;
+export const SLIDE_HEIGHT = 0.60 * height;
 
 export interface SildeProps {
     label: string;

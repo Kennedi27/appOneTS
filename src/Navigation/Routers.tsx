@@ -2,7 +2,13 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { OnboardingScreen, WelcomeScreen } from './ListRouter';
+import {
+    OnboardingScreen,
+    WelcomeScreen,
+    Login,
+    Register,
+    ForgorPassword,
+} from './ListRouter';
 import { Navigations } from './Navigations';
 
 const AuthenticationStack = createStackNavigator<Navigations>();
@@ -21,6 +27,27 @@ const AuthenticationStack = createStackNavigator<Navigations>();
                 component={WelcomeScreen}
                 options={{
                     headerShown: false,
+                }}
+            />
+            <AuthenticationStack.Screen
+                name="Login"
+                component={Login}
+                options={{
+                    headerShown: true,
+                }}
+            />
+            <AuthenticationStack.Screen
+                name="Register"
+                component={Register}
+                options={{
+                    headerShown: true,
+                }}
+            />
+            <AuthenticationStack.Screen
+                name="ForgotPassword"
+                component={ForgorPassword}
+                options={{
+                    headerShown: true,
                 }}
             />
         </AuthenticationStack.Navigator>

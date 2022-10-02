@@ -1,4 +1,4 @@
-import { Dimensions, Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import React from 'react';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
@@ -7,7 +7,6 @@ export interface ModelProps {
     index: number;
     currentIndex: Animated.SharedValue<number>;
 }
-const { width } = Dimensions.get('window');
 
 const Model = ({picture, currentIndex, index}: ModelProps) => {
     const rFixModel = useAnimatedStyle(() => {

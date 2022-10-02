@@ -8,5 +8,8 @@ export interface StackNavigatorProps<ParamList extends ParamListBase, RouteName 
 
 export type Navigations = {
     OnboardingScreen: undefined,
-    WelcomeScreen: undefined
+    WelcomeScreen: undefined,
+    Login: undefined,
+    Register: undefined,
+    ForgotPassword: undefined,
 }

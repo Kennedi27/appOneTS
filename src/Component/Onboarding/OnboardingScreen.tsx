@@ -1,14 +1,19 @@
 import { View, StyleSheet, Dimensions, Image } from 'react-native';
 import React, {useRef} from 'react';
-import Slide, { SLIDE_HEIGHT } from './Slide';
-import SubSlide from './SubSlide';
-import Animated, { Extrapolate, interpolate, interpolateColor, interpolateNode, useAnimatedScrollHandler, useAnimatedStyle, useDerivedValue, useSharedValue } from 'react-native-reanimated';
+import Animated, { interpolateColor, useAnimatedScrollHandler, useAnimatedStyle, useDerivedValue, useSharedValue } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
-import DotSlide from './DotSlide';
-import Model from './Model';
+import {
+    Model,
+    DotSlide,
+    Slide,
+    SubSlide,
+    SLIDE_HEIGHT,
+} from './Index';
+import { Config } from '../Config/Config';
+
 import { Navigations, StackNavigatorProps } from '../../Navigation/Navigations';
 
-const BORDER_RADIUS = 75;
+const BORDER_RADIUS = Config.borderRadius.md;
 const { width } = Dimensions.get('window');
 
 const slidesItem = [
@@ -17,28 +22,28 @@ const slidesItem = [
         color: '#BFEAF5',
         description: 'This is for Description Only. Test For Footer Content, So you can changes',
         subtitle: 'Title footer 1',
-        pictures: require('../../Assets/img/4.png')
+        pictures: require('../../Assets/img/4.png'),
     },
     {
         label: 'Playful',
         color: '#BEECC4',
         description: 'This is for Description Only. Test For Footer Content, So you can changes',
         subtitle: 'Title footer 2',
-        pictures: require('../../Assets/img/1.png')
+        pictures: require('../../Assets/img/1.png'),
     },
     {
         label: 'Excentric',
         color: '#FFE4d9',
         description: 'This is for Description Only. Test For Footer Content, So you can changes',
         subtitle: 'Title footer 3',
-        pictures: require('../../Assets/img/3.png')
+        pictures: require('../../Assets/img/3.png'),
     },
     {
         label: 'Funky',
         color: '#BFEAF5',
         description: 'This is for Description Only. Test For Footer Content, So you can changes',
         subtitle: 'Title footer 4',
-        pictures: require('../../Assets/img/2.png')
+        pictures: require('../../Assets/img/2.png'),
     },
 ];
 
@@ -118,7 +123,7 @@ const OnboardingScreen = ({ navigation }: StackNavigatorProps<Navigations, 'Onbo
                                         last={last}
                                         onPress={() => {
                                             if (last){
-                                                navigation.navigate('WelcomeScreen')
+                                                navigation.navigate('WelcomeScreen');
                                             } else if (scroll.current) {
                                                 scroll.current?.scrollTo({x: width * (i + 1), animated: true});
                                             }
@@ -149,7 +154,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         flexDirection: 'row',
-        marginTop: 15,
+        marginTop: Config.spacing.md,
     },
     footer: {
         flex: 1,
