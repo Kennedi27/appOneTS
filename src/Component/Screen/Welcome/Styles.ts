@@ -5,7 +5,7 @@ import { Config } from '../../Config/Config';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor: 'red',
+        backgroundColor: Config.colors.white,
     },
     topLayout: {
         height: SLIDE_HEIGHT,

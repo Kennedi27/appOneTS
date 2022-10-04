@@ -33,14 +33,14 @@ const AuthenticationStack = createStackNavigator<Navigations>();
                 name="Login"
                 component={Login}
                 options={{
-                    headerShown: true,
+                    headerShown: false,
                 }}
             />
             <AuthenticationStack.Screen
                 name="Register"
                 component={Register}
                 options={{
-                    headerShown: true,
+                    headerShown: false,
                 }}
             />
             <AuthenticationStack.Screen
