@@ -2,11 +2,13 @@ import OnboardingScreen from '../Component/Onboarding/OnboardingScreen';
 import WelcomeScreen from '../Component/Screen/Welcome/WelcomeScreen';
 import Login from '../Component/Screen/Login/Login';
 import Register from '../Component/Screen/Login/Register';
-import ForgorPassword from '../Component/Screen/Login/ForgorPassword';
+import ForgotPassword from '../Component/Screen/Login/ForgotPassword';
+import Homescreen from '../Component/Screen/Homescreen/Homescreen';
 export {
     OnboardingScreen,
     WelcomeScreen,
     Login,
     Register,
-    ForgorPassword,
+    ForgotPassword,
+    Homescreen,
 };

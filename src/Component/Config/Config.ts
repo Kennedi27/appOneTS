@@ -10,6 +10,7 @@ export const Config = {
         primary: '#2CB980',
         grey: 'rgba(12, 13, 52, 0.05)',
         blue: '#77CCFF',
+        danger: '#f56954',
         blueActive: '#3388FF',
         white: '#FFF',
         black: '#000',

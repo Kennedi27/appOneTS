@@ -7,7 +7,8 @@ import {
     WelcomeScreen,
     Login,
     Register,
-    ForgorPassword,
+    ForgotPassword,
+    Homescreen,
 } from './ListRouter';
 import { Navigations } from './Navigations';
 
@@ -45,9 +46,16 @@ const AuthenticationStack = createStackNavigator<Navigations>();
             />
             <AuthenticationStack.Screen
                 name="ForgotPassword"
-                component={ForgorPassword}
+                component={ForgotPassword}
                 options={{
-                    headerShown: true,
+                    headerShown: false,
+                }}
+            />
+            <AuthenticationStack.Screen
+                name="Homescreen"
+                component={Homescreen}
+                options={{
+                    headerShown: false,
                 }}
             />
         </AuthenticationStack.Navigator>

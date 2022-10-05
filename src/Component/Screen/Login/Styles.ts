@@ -14,7 +14,6 @@ export const Styles = StyleSheet.create({
     topLayoutLogin: {
         flex: 1,
         height: height * 0.50,
-        // backgroundColor: Config.colors.blue,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
@@ -22,7 +21,6 @@ export const Styles = StyleSheet.create({
     topLayoutRegister: {
         flex: 1,
         height: height * 0.45,
-        // backgroundColor: Config.colors.blue,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
@@ -110,7 +108,7 @@ export const Styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: 25,
+        marginVertical: 20,
     },
     forgotPassword: {
         marginVertical: 25,
@@ -125,5 +123,8 @@ export const Styles = StyleSheet.create({
         color: Config.colors.primary,
     },
     // End Login Style
-
+    errorMsg: {
+        color: Config.colors.danger,
+        fontSize: 13,
+    },
 });

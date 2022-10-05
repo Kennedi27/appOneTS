@@ -12,4 +12,5 @@ export type Navigations = {
     Login: undefined,
     Register: undefined,
     ForgotPassword: undefined,
+    Homescreen: undefined,
 }
