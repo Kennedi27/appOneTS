@@ -3,14 +3,27 @@ import React, { useState } from 'react';
 import { Styles } from './Styles';
 import { ScrollView } from 'react-native-gesture-handler';
 import ButtonCustom from '../../Button/ButtonCustom';
-import { StackNavigatorProps, Navigations } from '../../../Navigation/Navigations';
+import { Navigations, HomeRoute, StackAppRouters } from '../../../Navigation/Navigations';
 import { TextInputForm, TextInputFormIcon, LoginSchema } from '../../Form/Index';
 import { Config } from '../../Config/Config';
 import {Formik} from 'formik';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { CompositeNavigationProp } from '@react-navigation/native';
 
 const {width} = Dimensions.get('window');
 
-const Login = ({navigation}: StackNavigatorProps<Navigations, 'Login'> ) => {
+interface LoginProps {
+    navigation: CompositeNavigationProp<
+        StackNavigationProp<Navigations, 'Login'>,
+        CompositeNavigationProp<
+            StackNavigationProp<StackAppRouters>,
+            DrawerNavigationProp<HomeRoute>
+        >
+    >
+}
+
+const Login = ({navigation}: LoginProps ) => {
     const [showPassword, setShowPassword] = useState<boolean>(true);
 
     const handleShowPassword = () => {
@@ -40,7 +53,7 @@ const Login = ({navigation}: StackNavigatorProps<Navigations, 'Login'> ) => {
                 <Formik
                     validationSchema={LoginSchema}
                     initialValues={{ email: '', password: '' }}
-                    onSubmit={() => navigation.navigate('Homescreen')}
+                    onSubmit={() => navigation.navigate('Home',{screen: 'PersonalInformation'})}
                 >
                     {({ handleChange, handleBlur, handleSubmit, errors, touched }) => (
                         <View style={Styles.bottomLayoutLogin}>

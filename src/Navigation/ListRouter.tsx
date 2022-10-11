@@ -4,6 +4,8 @@ import Login from '../Component/Screen/Login/Login';
 import Register from '../Component/Screen/Login/Register';
 import ForgotPassword from '../Component/Screen/Login/ForgotPassword';
 import Homescreen from '../Component/Screen/Homescreen/Homescreen';
+import PersonalInformation from '../Component/Screen/Account/PersonalInformation';
+
 export {
     OnboardingScreen,
     WelcomeScreen,
@@ -11,4 +13,5 @@ export {
     Register,
     ForgotPassword,
     Homescreen,
+    PersonalInformation,
 };

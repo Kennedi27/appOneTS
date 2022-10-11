@@ -1,71 +1,31 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import StackNavigation from './StackNavigation';
+import DrawerNavigation from './DrawerNavigation';
+import { StackAppRouters } from './Navigations';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import {
-    OnboardingScreen,
-    WelcomeScreen,
-    Login,
-    Register,
-    ForgotPassword,
-    Homescreen,
-} from './ListRouter';
-import { Navigations } from './Navigations';
-
-const AuthenticationStack = createStackNavigator<Navigations>();
-    const AuthenticationNavigator = () => {
-    return (
-        <AuthenticationStack.Navigator initialRouteName="OnboardingScreen">
-            <AuthenticationStack.Screen
-                name="OnboardingScreen"
-                component={OnboardingScreen}
-                options={{
-                    headerShown: false,
-                }}
-            />
-            <AuthenticationStack.Screen
-                name="WelcomeScreen"
-                component={WelcomeScreen}
-                options={{
-                    headerShown: false,
-                }}
-            />
-            <AuthenticationStack.Screen
-                name="Login"
-                component={Login}
-                options={{
-                    headerShown: false,
-                }}
-            />
-            <AuthenticationStack.Screen
-                name="Register"
-                component={Register}
-                options={{
-                    headerShown: false,
-                }}
-            />
-            <AuthenticationStack.Screen
-                name="ForgotPassword"
-                component={ForgotPassword}
-                options={{
-                    headerShown: false,
-                }}
-            />
-            <AuthenticationStack.Screen
-                name="Homescreen"
-                component={Homescreen}
-                options={{
-                    headerShown: false,
-                }}
-            />
-        </AuthenticationStack.Navigator>
-    );
-};
+const AppStack = createStackNavigator<StackAppRouters>();
 
 const Routers = () => {
     return (
         <NavigationContainer>
-            <AuthenticationNavigator />
+            <AppStack.Navigator>
+                <AppStack.Screen
+                    name="Authentication"
+                    component={StackNavigation}
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <AppStack.Screen
+                    name="Home"
+                    component={DrawerNavigation}
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+            </AppStack.Navigator>
         </NavigationContainer>
     );
 };
