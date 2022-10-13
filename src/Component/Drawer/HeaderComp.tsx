@@ -14,18 +14,19 @@ interface HeaderCompProps {
     right: {
         icon: string;
         onPress: () => void
-    }
+    },
+    size: number;
 }
 
-const HeaderComp = ({labelHeader, left, right}: HeaderCompProps) => {
+const HeaderComp = ({labelHeader, left, right, size}: HeaderCompProps) => {
     return (
         <View style={styles.container}>
             <RectButton style={styles.roundedIcon} onPress={left.onPress}>
-                <Icon name={left.icon} size={20} color={Config.colors.title} />
+                <Icon name={left.icon} {...{size}} color={Config.colors.title} />
             </RectButton>
             <Text style={styles.labelHeader}>{labelHeader}</Text>
             <RectButton style={styles.roundedIcon} onPress={right.onPress}>
-                <Icon name={right.icon} size={20} color={Config.colors.title} />
+                <Icon name={right.icon} {...{size}} color={Config.colors.title} />
             </RectButton>
         </View>
     );
@@ -38,7 +39,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        // backgroundColor: 'red',
         height: 40,
         alignItems: 'center',
     },

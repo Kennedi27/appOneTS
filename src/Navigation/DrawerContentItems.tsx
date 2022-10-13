@@ -13,43 +13,43 @@ export const DRAWER_WIDTH = width * 0.85;
 const items = [
     {
         icon: 'umbrella',
-        bgIcon: Config.colors.primary,
+        bgColor: Config.colors.primary,
         label: 'Outfit Ideas',
-        screen: 'OutfitIdeas',
+        screen: 'Homescreen',
     },
     {
         icon: 'heartbeat',
-        bgIcon: Config.colors.blueActive,
+        bgColor: Config.colors.blueActive,
         label: 'Favorite Outfit',
-        screen: 'FavoriteOutfit',
+        screen: 'PersonalInformation',
     },
     {
         icon: 'user',
-        bgIcon: Config.colors.chocolate,
+        bgColor: Config.colors.chocolate,
         label: 'Personal Information',
         screen: 'PersonalInformation',
 
     },
     {
         icon: 'clock-o',
-        bgIcon: Config.colors.danger,
+        bgColor: Config.colors.danger,
         label: 'Transaction History',
-        screen: 'TransactionHistory',
+        screen: 'PersonalInformation',
     },
     {
         icon: 'gears',
-        bgIcon: Config.colors.pink,
+        bgColor: Config.colors.pink,
         label: 'Notification Setting',
-        screen: 'NotificationSetting',
+        screen: 'PersonalInformation',
 
     },
     {
         icon: 'sign-out',
-        bgIcon: Config.colors.title,
+        bgColor: Config.colors.title,
         label: 'Logout',
-        screen: 'Logout',
+        screen: 'PersonalInformation',
     },
-];
+] as const;
 
 const DrawerContentItems = () => {
     const navigation = useNavigation();
@@ -76,8 +76,8 @@ const DrawerContentItems = () => {
                         <Text style={styles.accountEmail}>kennedinadeak@gmail.com</Text>
                     </View>
                     <ScrollView showsVerticalScrollIndicator={false}>
-                        {items.map((item) => {
-                            return <DrawerItemList onPress={() => true} key={item.screen} bgColor={item.bgIcon} label={item.label} icon={item.icon} />;
+                        {items.map((item, index) => {
+                            return <DrawerItemList key={index} {...item} />;
                         })}
                     </ScrollView>
                 </View>

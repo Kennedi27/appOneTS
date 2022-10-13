@@ -3,19 +3,22 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Config } from '../Config/Config';
 import { RectButton } from 'react-native-gesture-handler';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { HomeRoute } from '../../Navigation/Navigations';
+import { useNavigation } from '@react-navigation/native';
 
 interface DrawerItemProps {
     icon: string;
     bgColor: string;
-    screen?: string;
+    screen: keyof HomeRoute;
     label: string;
-    onPress: () => void;
 }
 
-const DrawerItemList = ({ icon, bgColor, label, onPress }: DrawerItemProps ) => {
+const DrawerItemList = ({ icon, bgColor, label, screen }: DrawerItemProps ) => {
     const backgroundColor = bgColor;
+    const { navigate } = useNavigation<DrawerNavigationProp<HomeRoute, 'Homescreen'>>();
     return (
-        <RectButton style={styles.container} {...{onPress}}>
+        <RectButton style={styles.container} onPress={() => navigate(screen)} >
             <View style={[styles.icon, {backgroundColor}]}>
                 <Icon name={icon} size={15} color="#FFFFFF" />
             </View>

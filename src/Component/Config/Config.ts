@@ -33,4 +33,11 @@ export const Config = {
         lg: 16,
         xl: 20,
     },
+    cardColor: {
+        g0: '#49796b',
+        g1: '#317873',
+        g2: '#5f9ea0',
+        g3: '#a0d6b4',
+        g4: '#a3c1ad',
+    },
 };
