@@ -5,7 +5,6 @@ import { HomeRoute } from '../../../Navigation/Navigations';
 import HeaderComp from '../../Drawer/HeaderComp';
 import { Config } from '../../Config/Config';
 import BoxGrid from '../Fashion/BoxGrid';
-import Button from '../../Button/Button';
 import ButtonCustom from '../../Button/ButtonCustom';
 
 interface HomescreenProps {
@@ -77,8 +76,8 @@ const Homescreen = ({navigation}: HomescreenProps) => {
         });
 
         return () => {
-            subscriber()
-        }
+            subscriber();
+        };
     }, [navigation]);
 
     return (

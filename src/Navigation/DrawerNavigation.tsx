@@ -2,12 +2,10 @@ import * as React from 'react';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { HomeRoute } from './Navigations';
-import { Homescreen } from './ListRouter';
+import { Homescreen, PersonalInformation, Setting } from './ListRouter';
 
 const Drawer = createDrawerNavigator<HomeRoute>();
 import DrawerContentItems, { DRAWER_WIDTH } from './DrawerContentItems';
-
-import PersonalInformation from '../Component/Screen/Account/PersonalInformation';
 
 const DrawerNavigation = () => {
     return (
@@ -28,6 +26,10 @@ const DrawerNavigation = () => {
                 <Drawer.Screen
                     name="PersonalInformation"
                     component={PersonalInformation}
+                />
+                <Drawer.Screen
+                    name="Setting"
+                    component={Setting}
                 />
         </Drawer.Navigator>
     );

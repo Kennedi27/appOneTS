@@ -39,8 +39,8 @@ const items = [
     {
         icon: 'gears',
         bgColor: Config.colors.pink,
-        label: 'Notification Setting',
-        screen: 'PersonalInformation',
+        label: 'Setting',
+        screen: 'Setting',
 
     },
     {

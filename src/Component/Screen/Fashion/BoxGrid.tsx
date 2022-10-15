@@ -1,10 +1,11 @@
-import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
+import { Config } from '../../Config/Config';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const {width: wWidht} = Dimensions.get('window');
 
 interface BoxGridProps {
-    // id?: number;
     width: number;
     itemOption: {
         id: number;
@@ -28,13 +29,14 @@ const BoxGrid = ({ itemOption, width}: BoxGridProps) => {
                     }
                 }
             >
-                <View>
-                    {
-                        itemOption.selectedItem ?
-                            <Text>{itemOption.selectedItem ? 'Y' : 'N'}</Text> : <Text>N</Text>
-                        
-                    }
-                </View>
+                {
+                    itemOption.selectedItem && (
+                        <View style={styles.endRow}>
+                            <View style={styles.contCheck}>
+                                <Icon size={16} name="check" color={Config.colors.white} />
+                            </View>
+                        </View>)
+                }
         </TouchableOpacity>
     );
 };
@@ -45,5 +47,19 @@ const styles = StyleSheet.create({
     container: {
         marginBottom: 10,
         borderRadius: 10,
+    },
+    contCheck: {
+        backgroundColor: Config.colors.blueActive,
+        width: 22,
+        height: 22,
+        borderRadius: 11,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    endRow: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        margin: 10,
     },
 });

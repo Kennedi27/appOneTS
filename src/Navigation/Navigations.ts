@@ -33,4 +33,5 @@ export type Navigations = {
 export type HomeRoute = {
     PersonalInformation: undefined;
     Homescreen: undefined;
+    Setting: undefined;
 }

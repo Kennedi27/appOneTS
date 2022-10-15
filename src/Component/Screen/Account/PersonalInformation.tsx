@@ -5,6 +5,7 @@ import { Config } from '../../Config/Config';
 import { DrawerNavigatorPropsList } from '../../../Navigation/Navigations';
 import { CardComp } from '../Fashion';
 import BackgroundComp from '../Fashion/BackgroundComp';
+import { useSharedValue } from 'react-native-reanimated';
 
 const { height } = Dimensions.get('window');
 
@@ -27,6 +28,7 @@ const cardItems = [
 ];
 
 const PersonalInformation = ({navigation}: DrawerNavigatorPropsList<'PersonalInformation'> ) => {
+  const shufferback = useSharedValue(false);
   return (
     <View style={styles.container}>
       <HeaderComp
@@ -39,7 +41,7 @@ const PersonalInformation = ({navigation}: DrawerNavigatorPropsList<'PersonalInf
         <BackgroundComp />
         {
           cardItems.map((item, index) => {
-            return (<CardComp key={index} position={item.potition} backgroundColor={item.bgColor} imageContent={item.image} />);
+            return (<CardComp key={index} index={index} shuffleBack={shufferback} position={item.potition} backgroundColor={item.bgColor} imageContent={item.image} />);
           })
         }
       </View>
